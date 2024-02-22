@@ -4,33 +4,90 @@ body {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    gap: 100px;
+    padding-top: 20px;
 }
-.box {
-    width: 100px;
-    height: 100px;
-    animation: box 4s linear infinite backwards;
-    background-color: green;
-    transform: translate(100px, 100px);
+input[type="checkbox"] {
+    display: none;
 }
-@keyframes box {
-    0% {
-        transform: translate(100px, 100px);
-        transition: all 1s linear;
-    }
-    25% {
-        background-color: yellow;
-        transform: translate(100px, -100px);
-        transition: all 1s linear;
-    }
-    50% {
-        background-color: red;
-        transform: translate(-100px, -100px);
-        transition: all 1s linear;
-    }
-    75% {
-        background-color:  blue;
-        transform: translate(-100px, 100px);
-        transition: all 1s linear;
-    }
+input[type="checkbox"]:checked ~ .navigtion {
+    display: flex;
+}
+label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+}
+label:hover {
+    transform: scale(1.1);
+    transition: all 0.2s linear;
+}
+.menu-btn, 
+.menu-btn::before, 
+.menu-btn::after {
+    content: "";
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #333;
+    position: absolute;
+    right: 0;
+    transition: 0.3s;
+}
+.menu-btn:hover,
+.menu-btn:hover::before,
+.menu-btn:hover::after {
+    background-color: orange;
+} 
+.menu-btn::before {
+    top: -8px;
+}
+.menu-btn::after {
+    top: 8px;
+}
+input[type="checkbox"]:checked ~ label .menu-btn {
+    transform: rotate(-45deg);
+}
+input[type="checkbox"]:checked ~ label .menu-btn::before {
+    top: 0;
+    transform: rotate(0);
+}
+input[type="checkbox"]:checked ~ label .menu-btn::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+.navigtion {
+    display: none;
+    position: absolute;
+    top: 100px;
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 12px 8px #ececec;
+    justify-content: center;
+    align-items: center;
+}
+.navigtion__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+.navigtion__link {
+    text-decoration: none;
+    color: dimgrey;
+    font-size: 20px;
+}
+.navigtion__link:hover {
+    display: block;
+    color: orange;
+    transform: scale(1.1);
+    transition: all 0.2s linear;
 }
